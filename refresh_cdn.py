@@ -7,7 +7,7 @@ import json
 import os
 
 
-def refresh_cdn(secret_id, secret_key, paths, flush_type="flush"):
+def refresh_cdn(secret_id, secret_key, urls):
     cred = credential.Credential(secret_id, secret_key)
     http_profile = HttpProfile()
     http_profile.endpoint = "cdn.tencentcloudapi.com"
@@ -16,15 +16,14 @@ def refresh_cdn(secret_id, secret_key, paths, flush_type="flush"):
     client_profile.httpProfile = http_profile
     client = cdn_client.CdnClient(cred, "", client_profile)
 
-    req = models.PurgePathCacheRequest()
+    req = models.PushUrlsCacheRequest()
     params = {
-        "Paths": paths,
-        "FlushType": flush_type,
+        "Urls": urls,
     }
     params = json.dumps(params)
     req.from_json_string(params)
 
-    return client.PurgePathCache(req)
+    return client.PushUrlsCache(req)
 
 
 def parse_env():
@@ -32,13 +31,12 @@ def parse_env():
     assert secret_id is not None, "Please provide Secret ID"
     secret_key = os.getenv("SECRET_KEY", None)
     assert secret_key is not None, "Please provide Secret Key"
-    paths = os.getenv("PATHS", "")
+    urls = os.getenv("URLS", "")
     # split and only keep non-whitespaces
-    paths = filter(lambda pth: len(pth) > 0, map(str.strip, paths.split(",")))
-    paths = list(paths)
-    assert len(paths) >= 1, "Please specify at least one path to refresh"
-    flush_type = os.getenv("FLUSH_TYPE", "flush")
-    return secret_id, secret_key, paths, flush_type
+    urls = filter(lambda pth: len(pth) > 0, map(str.strip, urls.split(",")))
+    urls = list(urls)
+    assert len(urls) >= 1, "Please specify at least one path to refresh"
+    return secret_id, secret_key, urls
 
 
 if __name__ == '__main__':
