@@ -8,8 +8,8 @@ To use this Github action, you need to set the following environment variables i
 
 | Name | Description | Required |
 | --- | --- | --- |
-| SECRET_ID | your Tencent Cloud access token Secret ID | Yes |
-| SECRET_KEY | your Tencent Cloud access token Secret Key | Yes |
+| TENCENTCLOUD_CDN_SECRET_ID | your Tencent Cloud access token Secret ID | Yes |
+| TENCENTCLOUD_CDN_SECRET_KEY | your Tencent Cloud access token Secret Key | Yes |
 | URLS | urls to push, separated with comma `,` | Yes |
 
 ## Example Usage
