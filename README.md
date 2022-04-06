@@ -15,7 +15,7 @@ To use this Github action, you need to set the following environment variables i
 ## Example Usage
 
 ```yaml
-uses: xiaohuilam/tencent-cloud-cdn-purge-cache@v1.1
+uses: xiaohuilam/tencent-cloud-cdn-push-url@v1.2
 env:
   SECRET_ID: ${{ secrets.SECRET_ID}}
   SECRET_KEY: ${{ secrets.SECRET_KEY }}
