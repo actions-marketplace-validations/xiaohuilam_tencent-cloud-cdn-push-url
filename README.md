@@ -17,7 +17,7 @@ To use this Github action, you need to set the following environment variables i
 ```yaml
 uses: xiaohuilam/tencent-cloud-cdn-push-url@v1.2
 env:
-  SECRET_ID: ${{ secrets.SECRET_ID}}
-  SECRET_KEY: ${{ secrets.SECRET_KEY }}
+  SECRET_ID: ${{ secrets.TENCENTCLOUD_CDN_SECRET_ID }}
+  SECRET_KEY: ${{ secrets.TENCENTCLOUD_CDN_SECRET_KEY }}
   URLS: "https://example.com/foo.html,https://example.com/bar.html"
 ```

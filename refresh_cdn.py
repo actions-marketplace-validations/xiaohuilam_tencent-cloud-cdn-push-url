@@ -27,9 +27,9 @@ def refresh_cdn(secret_id, secret_key, urls):
 
 
 def parse_env():
-    secret_id = os.getenv("SECRET_ID", None)
+    secret_id = os.getenv("TENCENTCLOUD_CDN_SECRET_ID", None)
     assert secret_id is not None, "Please provide Secret ID"
-    secret_key = os.getenv("SECRET_KEY", None)
+    secret_key = os.getenv("TENCENTCLOUD_CDN_SECRET_KEY", None)
     assert secret_key is not None, "Please provide Secret Key"
     urls = os.getenv("URLS", "")
     # split and only keep non-whitespaces
